@@ -24,6 +24,7 @@ jobs:
             codename: focal
             odoo_version: "13.0"
             odoo_org_repo: "Loo-ERP/odoo"
+            odoo_enterprise_org_repo: "Loo-ERP/enterprise"
             setuptools_constraint: "<58"  # vatnumber needs setuptools with 2to3 support
             virtualenv_constraint: "<20.22"
             image_name: py3.7-odoo13.0
@@ -31,16 +32,19 @@ jobs:
             codename: focal
             odoo_version: "14.0"
             odoo_org_repo: "Loo-ERP/odoo"
+            odoo_enterprise_org_repo: "Loo-ERP/enterprise"
             image_name: py3.8-odoo14.0
           - python_version: "3.10"
             codename: jammy
             odoo_version: "16.0"
             odoo_org_repo: "Loo-ERP/odoo"
+            odoo_enterprise_org_repo: "Loo-ERP/enterprise"
             image_name: py3.10-odoo16.0
           - python_version: "3.10"
             codename: jammy
             odoo_version: "17.0"
             odoo_org_repo: "Loo-ERP/odoo"
+            odoo_enterprise_org_repo: "Loo-ERP/enterprise"
             image_name: py3.10-odoo17.0
           
     services:
@@ -69,8 +73,10 @@ jobs:
             python_version=${{ matrix.python_version }}
             odoo_version=${{ matrix.odoo_version }}
             odoo_org_repo=${{ matrix.odoo_org_repo }}
+            odoo_enterprise_org_repo=${{ matrix.odoo_enterprise_org_repo }}
             setuptools_constraint=${{ matrix.setuptools_constraint }}
             virtualenv_constraint=${{ matrix.virtualenv_constraint }}
+            GIT_TOKEN=${{ secrets.GIT_TOKEN }}
           tags: |
             ghcr.io/loo-erp/oca-ci/${{ matrix.image_name }}:latest
           labels: |
@@ -92,8 +98,10 @@ jobs:
             python_version=${{ matrix.python_version }}
             odoo_version=${{ matrix.odoo_version }}
             odoo_org_repo=${{ matrix.odoo_org_repo }}
+            odoo_enterprise_org_repo=${{ matrix.odoo_enterprise_org_repo }}
             setuptools_constraint=${{ matrix.setuptools_constraint }}
             virtualenv_constraint=${{ matrix.virtualenv_constraint }}
+            GIT_TOKEN=${{ secrets.GIT_TOKEN }}
           tags: |
             ghcr.io/loo-erp/oca-ci/${{ matrix.image_name }}:latest
           labels: |
